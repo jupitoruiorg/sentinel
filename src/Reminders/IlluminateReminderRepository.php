@@ -42,7 +42,7 @@ class IlluminateReminderRepository implements ReminderRepositoryInterface
      *
      * @var string
      */
-    protected $model = EloquentReminder::class;
+    //protected $model = EloquentReminder::class;
 
     /**
      * The expiration time in seconds.
@@ -64,7 +64,11 @@ class IlluminateReminderRepository implements ReminderRepositoryInterface
     {
         $this->users = $users;
 
-        $this->model = $model;
+        if (blank($model)) {
+            $this->model = EloquentReminder::class;
+        } else {
+            $this->model = $model;
+        }
 
         $this->expires = $expires;
     }

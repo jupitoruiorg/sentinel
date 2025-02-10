@@ -55,7 +55,7 @@ class IlluminatePersistenceRepository implements PersistenceRepositoryInterface
      *
      * @var string
      */
-    protected $model = EloquentPersistence::class;
+    //protected $model = EloquentPersistence::class;
 
     /**
      * Create a new Sentinel persistence repository.
@@ -69,7 +69,11 @@ class IlluminatePersistenceRepository implements PersistenceRepositoryInterface
      */
     public function __construct(SessionInterface $session, CookieInterface $cookie, string $model = null, bool $single = false)
     {
-        $this->model = $model;
+        if (blank($model)) {
+            $this->model = EloquentPersistence::class;
+        } else {
+            $this->model = $model;
+        }
 
         $this->session = $session;
 

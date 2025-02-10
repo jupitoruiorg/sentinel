@@ -44,7 +44,7 @@ class IlluminateUserRepository implements UserRepositoryInterface
      *
      * @var string
      */
-    protected $model = EloquentUser::class;
+    //protected $model = EloquentUser::class;
 
     /**
      * Constructor.
@@ -61,7 +61,11 @@ class IlluminateUserRepository implements UserRepositoryInterface
 
         $this->dispatcher = $dispatcher;
 
-        $this->model = $model;
+        if (blank($model)) {
+            $this->model = EloquentUser::class;
+        } else {
+            $this->model = $model;
+        }
     }
 
     /**

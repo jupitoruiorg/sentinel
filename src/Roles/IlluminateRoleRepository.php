@@ -31,7 +31,7 @@ class IlluminateRoleRepository implements RoleRepositoryInterface
      *
      * @var string
      */
-    protected $model = EloquentRole::class;
+    //protected $model = EloquentRole::class;
 
     /**
      * Create a new Illuminate role repository.
@@ -42,7 +42,11 @@ class IlluminateRoleRepository implements RoleRepositoryInterface
      */
     public function __construct(string $model = null)
     {
-        $this->model = $model;
+        if (blank($model)) {
+            $this->model = EloquentRole::class;
+        } else {
+            $this->model = $model;
+        }
     }
 
     /**

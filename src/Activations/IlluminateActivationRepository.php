@@ -34,7 +34,7 @@ class IlluminateActivationRepository implements ActivationRepositoryInterface
      *
      * @var string
      */
-    protected $model = EloquentActivation::class;
+    //protected $model = EloquentActivation::class;
 
     /**
      * The activation expiration time, in seconds.
