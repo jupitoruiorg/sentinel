@@ -40,7 +40,7 @@ class IlluminateRoleRepository implements RoleRepositoryInterface
      *
      * @return void
      */
-    public function __construct(string $model = null)
+    public function __construct(?string $model = null)
     {
         if (blank($model)) {
             $this->model = EloquentRole::class;

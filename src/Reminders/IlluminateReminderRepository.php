@@ -60,7 +60,7 @@ class IlluminateReminderRepository implements ReminderRepositoryInterface
      *
      * @return void
      */
-    public function __construct(UserRepositoryInterface $users, string $model = null, int $expires = null)
+    public function __construct(UserRepositoryInterface $users, ?string $model = null, ?int $expires = null)
     {
         $this->users = $users;
 
@@ -97,7 +97,7 @@ class IlluminateReminderRepository implements ReminderRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function get(UserInterface $user, string $code = null)
+    public function get(UserInterface $user, ?string $code = null)
     {
         $expires = $this->expires();
 
@@ -119,7 +119,7 @@ class IlluminateReminderRepository implements ReminderRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function exists(UserInterface $user, string $code = null): bool
+    public function exists(UserInterface $user, ?string $code = null): bool
     {
         return (bool) $this->get($user, $code);
     }
